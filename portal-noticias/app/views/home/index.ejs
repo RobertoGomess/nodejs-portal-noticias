@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+<!-- incluindo o head -->
+<%- include('../head.ejs'); %>
+
+<body>
+
+	<!-- incluindo o menu -->
+	<%- include('../menu.ejs');  %>
+	<% if (noticias!=null && noticias.length>4) { -%>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 mb-4">
+				<div class="noticia_wrapper">
+					<span class="noticia_autor"><%= noticias[0].autor %></span>
+					<a href="noticia?news=<%=noticias[0].id_noticia %>" class="noticia_titulo"><%=noticias[0].titulo %></a>
+					<span class="noticia_data"><%=noticias[0].data_noticia %></span>
+					<br />
+					<p class="noticia_resumo">
+						<%=noticias[0].resumo %>
+					</p>
+				</div>
+			</div>
+
+			<div class="col-md-4 mb-4">
+				<div class="noticia_wrapper">
+					<span class="noticia_autor"><%= noticias[1].autor %></span>
+					<a href="noticia?news=<%=noticias[1].id_noticia %>" class="noticia_titulo"><%=noticias[1].titulo %></a>
+					<span class="noticia_data"><%=noticias[1].data_noticia %></span>
+					<br />
+					<p class="noticia_resumo">
+						<%=noticias[1].resumo %>
+					</p>
+				</div>
+			</div>
+
+			<div class="container">
+				<div class="form">
+					<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+						<div class="carousel-inner">
+
+							<% for (var i = 2; i < noticias.length; i++) { -%>
+
+
+							<% if (i==2) { -%>
+
+							<div class="carousel-item active text-center">
+
+								<div class="mb-8">
+									<div class="noticia_wrapper">
+										<span class="noticia_autor"><%= noticias[i].autor %></span>
+										<a href="noticia?news=<%=noticias[i].id_noticia  %>" class="noticia_titulo"><%=noticias[i].titulo %></a>
+										<span class="noticia_data"><%=noticias[i].data_noticia %></span>
+										<br />
+										<p class="noticia_resumo mt-8">
+											<%=noticias[i].resumo %>
+										</p>
+									</div>
+								</div>
+							</div>
+
+							<% } else { -%>
+
+							<div class="carousel-item text-center">
+
+								<div class="mb-8">
+									<div class="noticia_wrapper">
+										<span class="noticia_autor"><%= noticias[i].autor %></span>
+										<a href="noticia?news=<%=noticias[i].id_noticia  %>" class="noticia_titulo"><%=noticias[i].titulo %></a>
+										<span class="noticia_data"><%=noticias[i].data_noticia %></span>
+										<br />
+										<p class="noticia_resumo">
+											<%=noticias[i].resumo %>
+										</p>
+									</div>
+								</div>
+
+							</div>
+
+							<% } -%>
+
+							<% } -%>
+						</div>
+						<a class="carousel-control-prev wd-5" href="#carouselExampleControls" role="button" data-slide="prev">
+							<span class="carousel-control-prev-icon bg-primary rounded-circle" aria-hidden="true"> </span>
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="carousel-control-next wd-5" href="#carouselExampleControls" role="button" data-slide="next">
+							<span class="carousel-control-next-icon bg-primary rounded-circle" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						</a>
+					</div>
+
+				</div>
+
+				<div class="form text-center">
+					<div class="form-group">
+						<a href="/noticias"> 
+							<button type="button" class="btn btn-outline-secondary btn-lg">Ver todos notícias</button>
+						</a>
+
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+	<% } else { -%>
+
+	<%- include('../pageError.ejs',{msg:'Não foi possível exibir as notícias  :('})%>
+
+
+	<% } -%>
+
+
+
+
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+
+<%- include('../head.ejs'); %>
+
+<body>
+
+    <%- include('../menu.ejs');  %>
+
+    <div class="container">
+        <% if (validacao.length>0) { -%>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-danger">
+                        <strong>Atenção!</strong>
+                        <ul>
+                            <% for (var i = 0; i < validacao.length; i++) { -%>
+                                <li><%=validacao[i].msg  %></li>
+                                <% } -%>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <% } -%>
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <form id="formNoticia" action="/formulario_inclusao_noticia" method="post" onload="resetar(form)" >
+                            <div class="form-group">
+                                <label for="titulo">Título:</label>
+                                <input type="text" value= "<%=noticia.titulo %>"" class="form-control" id="titulo" name="titulo">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pwd">Resumo:</label>
+                                <input type="text" value= "<%=noticia.resumo %>"" class="form-control" id="resumo" name="resumo">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="pwd">Autor:</label>
+                                <input type="text" value= "<%=noticia.autor %>"" class="form-control" id="autor" name="autor">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pwd">Data:</label>
+                                <input type="date" value= "<%=noticia.data_noticia %>"" class="form-control" id="data_noticia" name="data_noticia">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pwd">Notícia:</label>
+                                <textarea class="form-control" id="noticia" name="noticia"><%=noticia.noticia%></textarea>
+                            </div>
+                            <div class="form text-center">
+                                <div class="form-group">
+                                <a href="/"> 
+                                    <button type="button" class="btn btn-outline-secondary btn-lg">voltar</button>
+                                </a>
+                                
+                                <button type="submit" class="btn btn-outline-success btn-lg"> Cadastrar</button>
+                            </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+            
+        </body>
+
+        <script type="text/javascript" src="js/global.js"></script>
+        </html>
